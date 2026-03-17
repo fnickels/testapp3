@@ -2,7 +2,7 @@
 
 **Feature Branch**: `001-location-weather`  
 **Created**: 2026-03-17  
-**Status**: Draft  
+**Status**: Implemented  
 **Input**: User description: "Build a modern looking web site that allows a user to specify a location and then provides basic current weather related facts about the location"
 
 ## Clarifications
@@ -125,6 +125,9 @@ and mobile layouts with mouse and keyboard-only navigation.
   clipped text.
 - Keyboard trap, missing focus indicator, or unreadable contrast are considered
   critical accessibility failures.
+- Browser requests from configured frontend origins must successfully access API
+  routes without cross-origin blocking.
+- Browser requests from untrusted origins must not be granted API access headers.
 
 ## Requirements *(mandatory)*
 
@@ -169,6 +172,12 @@ and mobile layouts with mouse and keyboard-only navigation.
   when limits are exceeded.
 - **FR-015**: System MUST retain non-sensitive operational logs for 30 days and
   automatically delete logs older than that retention window.
+- **FR-016**: System MUST support cross-origin API access for explicitly
+  configured frontend origins, including required preflight handling for browser
+  requests.
+- **FR-017**: System MUST present weather content with a visually polished,
+  responsive UI hierarchy using clear section emphasis, readable typography,
+  and high-contrast interactive controls.
 
 ## Assumptions & Dependencies
 
@@ -207,3 +216,5 @@ and mobile layouts with mouse and keyboard-only navigation.
   the search-and-view journey successfully on both desktop and mobile layouts.
 - **SC-005**: In keyboard-only accessibility checks, 100% of critical actions
   (enter location, submit, read result, retry) are operable without pointer input.
+- **SC-006**: In manual browser smoke checks, 100% of weather lookup attempts
+  from configured frontend origins complete without CORS-related request failure.

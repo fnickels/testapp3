@@ -11,7 +11,9 @@ Build a modern responsive weather website where users enter a location and recei
 current weather facts, with explicit handling for ambiguity, stale data, and
 rate-limited requests. The solution uses a Node.js backend API for location
 resolution and weather retrieval plus a React frontend for interactive search,
-results display, unit toggling, and accessibility-focused UX.
+results display, unit toggling, and accessibility-focused UX. Final
+implementation includes browser-safe CORS handling for local frontend origins,
+explicit frontend network-error surfacing, and an upgraded visual design system.
 
 ## Technical Context
 
@@ -28,7 +30,7 @@ results display, unit toggling, and accessibility-focused UX.
 **Target Platform**: Linux-hosted Node backend and modern desktop/mobile browsers
 **Project Type**: Web application (frontend + backend)  
 **Performance Goals**: p95 API response <= 1200ms excluding upstream latency; p95 end-to-end weather result display <= 3s for successful lookups  
-**Constraints**: No user accounts in v1; browser-locale unit default with toggle; stale threshold 15 minutes; log retention 30 days; WCAG 2.1 AA essentials  
+**Constraints**: No user accounts in v1; browser-locale unit default with toggle; stale threshold 15 minutes; log retention 30 days; WCAG 2.1 AA essentials; configured-origin CORS enforcement  
 **Scale/Scope**: Initial release targeting low-to-moderate public traffic (up to ~50 requests/minute sustained per instance)
 
 ## Constitution Check
@@ -127,6 +129,16 @@ accessible behavior.
 - Verification and Safe Delivery: PASS WITH DEFERRED AUTOMATION
   - Manual smoke validation steps included now; automated test-case authoring is
     intentionally deferred per user instruction and will be enforced before release.
+
+## Implementation Deltas (Post-Plan)
+
+- Added backend CORS middleware in backend/src/app.ts to allow configured local
+  frontend origins and handle preflight OPTIONS requests.
+- Hardened frontend API client in frontend/src/services/weatherApi.ts to surface
+  network and connectivity failures as user-visible errors.
+- Refreshed UI presentation in frontend/src/styles/theme.css,
+  frontend/src/styles/weather-page.css, and frontend/src/pages/WeatherPage.tsx
+  with improved visual hierarchy, controls, and responsive polish.
 
 ## Complexity Tracking
 

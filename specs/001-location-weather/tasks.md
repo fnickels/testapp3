@@ -124,6 +124,9 @@ description: "Task list for implementing the location weather facts website"
 - [X] T044 Harden log sanitization and metadata scrubbing rules in backend/src/config/logging.ts
 - [X] T045 Tune provider timeout and retry defaults in backend/src/config/provider.ts
 - [X] T046 Run full manual quickstart validation and capture findings in specs/001-location-weather/quickstart.md
+- [X] T047 Implement configured-origin CORS handling and preflight support in backend/src/app.ts
+- [X] T048 Improve frontend API network-failure error handling in frontend/src/services/weatherApi.ts
+- [X] T049 Refresh UI theme and layout polish in frontend/src/styles/theme.css, frontend/src/styles/weather-page.css, frontend/src/pages/WeatherPage.tsx
 
 ---
 

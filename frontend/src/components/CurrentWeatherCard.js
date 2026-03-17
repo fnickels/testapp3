@@ -1,4 +1,0 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-export function CurrentWeatherCard({ location, weather }) {
-    return (_jsxs("section", { "aria-label": "Current weather facts", children: [_jsx("h2", { children: location.displayName }), _jsxs("ul", { children: [_jsxs("li", { children: ["Temperature: ", weather.temperature] }), _jsxs("li", { children: ["Feels like: ", weather.apparentTemperature] }), _jsxs("li", { children: ["Humidity: ", weather.humidityPercent, "%"] }), _jsxs("li", { children: ["Wind: ", weather.windSpeed, " ", weather.windDirection] }), _jsxs("li", { children: ["Precipitation: ", weather.precipitationStatus] }), _jsxs("li", { children: ["Observed at: ", new Date(weather.observedAt).toLocaleString()] })] }), weather.isStale ? _jsxs("p", { role: "status", children: ["Data may be stale. ", weather.staleReason] }) : null] }));
-}
