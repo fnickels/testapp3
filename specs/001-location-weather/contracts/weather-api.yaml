@@ -1,0 +1,208 @@
+openapi: 3.0.3
+info:
+  title: Location Weather API
+  version: 1.0.0
+  description: API contract for resolving locations and retrieving current weather facts.
+servers:
+  - url: /api/v1
+paths:
+  /locations/search:
+    get:
+      summary: Search and resolve location query
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 120
+      responses:
+        "200":
+          description: Query processed
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/AmbiguousLocationResponse"
+                  - $ref: "#/components/schemas/ResolvedLocationResponse"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "429":
+          description: Rate limit exceeded
+          headers:
+            Retry-After:
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /weather/current:
+    get:
+      summary: Get current weather for a resolved location
+      parameters:
+        - in: query
+          name: locationId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: units
+          required: false
+          schema:
+            type: string
+            enum: [metric, imperial]
+      responses:
+        "200":
+          description: Current weather facts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CurrentWeatherResponse"
+        "404":
+          description: Location not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "429":
+          description: Rate limit exceeded
+          headers:
+            Retry-After:
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "502":
+          description: Upstream provider error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "504":
+          description: Upstream timeout
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    LocationCandidate:
+      type: object
+      required: [candidateId, displayName, region, country]
+      properties:
+        candidateId:
+          type: string
+        displayName:
+          type: string
+        region:
+          type: string
+        country:
+          type: string
+
+    ResolvedLocation:
+      type: object
+      required: [locationId, displayName, latitude, longitude, timezone]
+      properties:
+        locationId:
+          type: string
+        displayName:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        timezone:
+          type: string
+
+    CurrentWeather:
+      type: object
+      required:
+        [observedAt, temperature, apparentTemperature, humidityPercent, windSpeed, windDirection, precipitationStatus, units, isStale]
+      properties:
+        observedAt:
+          type: string
+          format: date-time
+        temperature:
+          type: number
+        apparentTemperature:
+          type: number
+        humidityPercent:
+          type: number
+          minimum: 0
+          maximum: 100
+        windSpeed:
+          type: number
+        windDirection:
+          type: string
+        precipitationStatus:
+          type: string
+        units:
+          type: string
+          enum: [metric, imperial]
+        isStale:
+          type: boolean
+        staleReason:
+          type: string
+          nullable: true
+
+    AmbiguousLocationResponse:
+      type: object
+      required: [status, message, candidates]
+      properties:
+        status:
+          type: string
+          enum: [ambiguous]
+        message:
+          type: string
+        candidates:
+          type: array
+          items:
+            $ref: "#/components/schemas/LocationCandidate"
+
+    ResolvedLocationResponse:
+      type: object
+      required: [status, location]
+      properties:
+        status:
+          type: string
+          enum: [resolved]
+        location:
+          $ref: "#/components/schemas/ResolvedLocation"
+
+    CurrentWeatherResponse:
+      type: object
+      required: [status, location, weather]
+      properties:
+        status:
+          type: string
+          enum: [success]
+        location:
+          $ref: "#/components/schemas/ResolvedLocation"
+        weather:
+          $ref: "#/components/schemas/CurrentWeather"
+
+    ErrorResponse:
+      type: object
+      required: [status, code, message]
+      properties:
+        status:
+          type: string
+          enum: [error]
+        code:
+          type: string
+          enum: [invalid_input, unresolved_location, provider_error, timeout, rate_limited]
+        message:
+          type: string
+        retryAfterSeconds:
+          type: integer
+          nullable: true
