@@ -21,13 +21,13 @@ description: "Task list for implementing the location weather facts website"
 
 **Purpose**: Initialize project scaffolding for Node backend and React frontend.
 
-- [ ] T001 Initialize backend Node/TypeScript project manifest in backend/package.json
-- [ ] T002 Initialize frontend React/Vite TypeScript manifest in frontend/package.json
-- [ ] T003 [P] Add backend environment template in backend/.env.example
-- [ ] T004 [P] Add frontend environment template in frontend/.env.example
-- [ ] T005 [P] Add root workspace scripts for backend/frontend dev workflows in package.json
-- [ ] T006 [P] Create base backend app entrypoint in backend/src/app.ts
-- [ ] T007 [P] Create base frontend app shell in frontend/src/pages/WeatherPage.tsx
+- [X] T001 Initialize backend Node/TypeScript project manifest in backend/package.json
+- [X] T002 Initialize frontend React/Vite TypeScript manifest in frontend/package.json
+- [X] T003 [P] Add backend environment template in backend/.env.example
+- [X] T004 [P] Add frontend environment template in frontend/.env.example
+- [X] T005 [P] Add root workspace scripts for backend/frontend dev workflows in package.json
+- [X] T006 [P] Create base backend app entrypoint in backend/src/app.ts
+- [X] T007 [P] Create base frontend app shell in frontend/src/pages/WeatherPage.tsx
 
 ---
 
@@ -37,16 +37,16 @@ description: "Task list for implementing the location weather facts website"
 
 **CRITICAL**: User story work starts only after this phase.
 
-- [ ] T008 Finalize API contract for location search and weather retrieval in specs/001-location-weather/contracts/weather-api.yaml
-- [ ] T009 Implement API error model and response helper in backend/src/models/api-error.ts
-- [ ] T010 [P] Implement request logging configuration with retention policy hooks in backend/src/config/logging.ts
-- [ ] T011 [P] Implement per-client rate-limit middleware with Retry-After support in backend/src/middleware/rateLimit.ts
-- [ ] T012 Implement location-query input validation schema in backend/src/api/validators/locationQuery.ts
-- [ ] T013 Implement weather provider client abstraction with timeout handling in backend/src/clients/weatherProviderClient.ts
-- [ ] T014 Implement location resolution domain service in backend/src/services/locationResolutionService.ts
-- [ ] T015 Implement weather normalization and stale-policy logic in backend/src/services/weatherNormalizationService.ts
-- [ ] T016 [P] Implement typed frontend API service contract client in frontend/src/services/weatherApi.ts
-- [ ] T017 [P] Implement shared frontend state for unit preference and selected location in frontend/src/state/weatherPreferences.ts
+- [X] T008 Finalize API contract for location search and weather retrieval in specs/001-location-weather/contracts/weather-api.yaml
+- [X] T009 Implement API error model and response helper in backend/src/models/api-error.ts
+- [X] T010 [P] Implement request logging configuration with retention policy hooks in backend/src/config/logging.ts
+- [X] T011 [P] Implement per-client rate-limit middleware with Retry-After support in backend/src/middleware/rateLimit.ts
+- [X] T012 Implement location-query input validation schema in backend/src/api/validators/locationQuery.ts
+- [X] T013 Implement weather provider client abstraction with timeout handling in backend/src/clients/weatherProviderClient.ts
+- [X] T014 Implement location resolution domain service in backend/src/services/locationResolutionService.ts
+- [X] T015 Implement weather normalization and stale-policy logic in backend/src/services/weatherNormalizationService.ts
+- [X] T016 [P] Implement typed frontend API service contract client in frontend/src/services/weatherApi.ts
+- [X] T017 [P] Implement shared frontend state for unit preference and selected location in frontend/src/state/weatherPreferences.ts
 
 **Checkpoint**: Foundation complete; user stories are unblocked.
 
@@ -60,16 +60,16 @@ description: "Task list for implementing the location weather facts website"
 
 ### Implementation for User Story 1
 
-- [ ] T018 [P] [US1] Build location search form component in frontend/src/components/LocationSearchForm.tsx
-- [ ] T019 [P] [US1] Build weather facts display card in frontend/src/components/CurrentWeatherCard.tsx
-- [ ] T020 [US1] Implement location search route wiring in backend/src/api/routes/locationRoutes.ts
-- [ ] T021 [US1] Implement weather route wiring in backend/src/api/routes/weatherRoutes.ts
-- [ ] T022 [US1] Implement weather request controller flow in backend/src/api/controllers/weatherController.ts
-- [ ] T023 [US1] Implement location resolution controller flow in backend/src/api/controllers/locationController.ts
-- [ ] T024 [US1] Implement page-level search-to-result flow in frontend/src/pages/WeatherPage.tsx
-- [ ] T025 [US1] Implement unit toggle component with browser-locale default in frontend/src/components/UnitToggle.tsx
-- [ ] T026 [US1] Implement display unit formatting utilities in frontend/src/services/unitFormatter.ts
-- [ ] T027 [US1] Add US1 manual smoke validation steps in specs/001-location-weather/quickstart.md
+- [X] T018 [P] [US1] Build location search form component in frontend/src/components/LocationSearchForm.tsx
+- [X] T019 [P] [US1] Build weather facts display card in frontend/src/components/CurrentWeatherCard.tsx
+- [X] T020 [US1] Implement location search route wiring in backend/src/api/routes/locationRoutes.ts
+- [X] T021 [US1] Implement weather route wiring in backend/src/api/routes/weatherRoutes.ts
+- [X] T022 [US1] Implement weather request controller flow in backend/src/api/controllers/weatherController.ts
+- [X] T023 [US1] Implement location resolution controller flow in backend/src/api/controllers/locationController.ts
+- [X] T024 [US1] Implement page-level search-to-result flow in frontend/src/pages/WeatherPage.tsx
+- [X] T025 [US1] Implement unit toggle component with browser-locale default in frontend/src/components/UnitToggle.tsx
+- [X] T026 [US1] Implement display unit formatting utilities in frontend/src/services/unitFormatter.ts
+- [X] T027 [US1] Add US1 manual smoke validation steps in specs/001-location-weather/quickstart.md
 
 **Checkpoint**: User Story 1 is fully functional and manually verifiable.
 
@@ -83,14 +83,14 @@ description: "Task list for implementing the location weather facts website"
 
 ### Implementation for User Story 2
 
-- [ ] T028 [P] [US2] Build ambiguous-location candidate picker component in frontend/src/components/LocationCandidateList.tsx
-- [ ] T029 [US2] Implement ambiguous candidate response handling in backend/src/api/controllers/locationController.ts
-- [ ] T030 [US2] Implement provider/timeout/unresolved error mapping service in backend/src/services/errorMappingService.ts
-- [ ] T031 [US2] Implement stale-weather response annotations in backend/src/api/controllers/weatherController.ts
-- [ ] T032 [US2] Implement frontend status panel for error/empty/stale states in frontend/src/components/WeatherStatusPanel.tsx
-- [ ] T033 [US2] Preserve last submitted query across failures in frontend/src/state/searchState.ts
-- [ ] T034 [US2] Implement Retry-After response handling in frontend/src/services/weatherApi.ts
-- [ ] T035 [US2] Add US2 manual smoke validation steps in specs/001-location-weather/quickstart.md
+- [X] T028 [P] [US2] Build ambiguous-location candidate picker component in frontend/src/components/LocationCandidateList.tsx
+- [X] T029 [US2] Implement ambiguous candidate response handling in backend/src/api/controllers/locationController.ts
+- [X] T030 [US2] Implement provider/timeout/unresolved error mapping service in backend/src/services/errorMappingService.ts
+- [X] T031 [US2] Implement stale-weather response annotations in backend/src/api/controllers/weatherController.ts
+- [X] T032 [US2] Implement frontend status panel for error/empty/stale states in frontend/src/components/WeatherStatusPanel.tsx
+- [X] T033 [US2] Preserve last submitted query across failures in frontend/src/state/searchState.ts
+- [X] T034 [US2] Implement Retry-After response handling in frontend/src/services/weatherApi.ts
+- [X] T035 [US2] Add US2 manual smoke validation steps in specs/001-location-weather/quickstart.md
 
 **Checkpoint**: User Story 2 is fully functional and manually verifiable.
 
@@ -104,12 +104,12 @@ description: "Task list for implementing the location weather facts website"
 
 ### Implementation for User Story 3
 
-- [ ] T036 [P] [US3] Implement responsive weather page layout styles in frontend/src/styles/weather-page.css
-- [ ] T037 [P] [US3] Add semantic landmarks and accessible labeling in frontend/src/pages/WeatherPage.tsx
-- [ ] T038 [US3] Implement keyboard focus flow management hook in frontend/src/hooks/useWeatherFocusFlow.ts
-- [ ] T039 [US3] Implement accessible inline form error announcement component in frontend/src/components/FormErrorNotice.tsx
-- [ ] T040 [US3] Add high-contrast color tokens for critical text and controls in frontend/src/styles/theme.css
-- [ ] T041 [US3] Add US3 manual accessibility and viewport validation steps in specs/001-location-weather/quickstart.md
+- [X] T036 [P] [US3] Implement responsive weather page layout styles in frontend/src/styles/weather-page.css
+- [X] T037 [P] [US3] Add semantic landmarks and accessible labeling in frontend/src/pages/WeatherPage.tsx
+- [X] T038 [US3] Implement keyboard focus flow management hook in frontend/src/hooks/useWeatherFocusFlow.ts
+- [X] T039 [US3] Implement accessible inline form error announcement component in frontend/src/components/FormErrorNotice.tsx
+- [X] T040 [US3] Add high-contrast color tokens for critical text and controls in frontend/src/styles/theme.css
+- [X] T041 [US3] Add US3 manual accessibility and viewport validation steps in specs/001-location-weather/quickstart.md
 
 **Checkpoint**: User Story 3 is fully functional and manually verifiable.
 
@@ -119,11 +119,11 @@ description: "Task list for implementing the location weather facts website"
 
 **Purpose**: Final hardening, documentation, and release-readiness.
 
-- [ ] T042 [P] Document setup and runtime configuration for backend/frontend in README.md
-- [ ] T043 [P] Document rollback and reversion runbook in docs/runbook-weather.md
-- [ ] T044 Harden log sanitization and metadata scrubbing rules in backend/src/config/logging.ts
-- [ ] T045 Tune provider timeout and retry defaults in backend/src/config/provider.ts
-- [ ] T046 Run full manual quickstart validation and capture findings in specs/001-location-weather/quickstart.md
+- [X] T042 [P] Document setup and runtime configuration for backend/frontend in README.md
+- [X] T043 [P] Document rollback and reversion runbook in docs/runbook-weather.md
+- [X] T044 Harden log sanitization and metadata scrubbing rules in backend/src/config/logging.ts
+- [X] T045 Tune provider timeout and retry defaults in backend/src/config/provider.ts
+- [X] T046 Run full manual quickstart validation and capture findings in specs/001-location-weather/quickstart.md
 
 ---
 

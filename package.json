@@ -1,0 +1,11 @@
+{
+  "name": "testapp3-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev": "echo \"Run 'npm run dev:backend' and 'npm run dev:frontend' in separate terminals\"",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build"
+  }
+}
